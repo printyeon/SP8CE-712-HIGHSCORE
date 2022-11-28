@@ -1,23 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ceb0de3c-532b-492b-bb33-314b8cabf612" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShootingGame.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Audio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Enemy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EnemyAttack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PlayerAttack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ShootingGame.java" afterDir="false" />
+    <list default="true" id="ceb0de3c-532b-492b-bb33-314b8cabf612" name="변경" comment="초기 커밋">
+      <change afterPath="$PROJECT_DIR$/src/database/DB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ShootingGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShootingGame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +42,8 @@
     &quot;project.structure.last.edited&quot;: &quot;라이브러리&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
@@ -67,6 +57,14 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\java프로젝트\ShootingGame\src\images" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="database" />
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="database" />
+      <recent name="" />
     </key>
   </component>
   <component name="RunManager">
@@ -96,8 +94,22 @@
       <workItem from="1669218659807" duration="4628000" />
       <workItem from="1669306519837" duration="6814000" />
       <workItem from="1669342358436" duration="2468000" />
-      <workItem from="1669448710781" duration="986000" />
+      <workItem from="1669448710781" duration="1403000" />
+      <workItem from="1669450154601" duration="19068000" />
+      <workItem from="1669534513990" duration="8219000" />
+      <workItem from="1669552887600" duration="11839000" />
+      <workItem from="1669593113872" duration="762000" />
+      <workItem from="1669604793122" duration="10153000" />
+      <workItem from="1669646638090" duration="4952000" />
     </task>
+    <task id="LOCAL-00001" summary="초기 커밋">
+      <created>1669449887429</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1669449887429</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -108,11 +120,27 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="초기 커밋" />
+    <option name="LAST_COMMIT_MESSAGE" value="초기 커밋" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -123,5 +151,9 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

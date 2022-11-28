@@ -1,3 +1,5 @@
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -6,8 +8,7 @@ public class Game extends Thread {
     private int delay = 20;
     private long pretime;
     private int cnt;
-    private int score;
-
+    public static int score;
     private Image player = new ImageIcon("src/images/hp.png").getImage();
 
     private int playerX, playerY;
@@ -17,7 +18,7 @@ public class Game extends Thread {
     private int playerHp = 30;
 
     private boolean up, down, left, right, shooting;
-    private boolean isOver;
+    public static boolean isOver = false;
 
     private ArrayList<PlayerAttack> playerAttackList = new ArrayList<PlayerAttack>();
     private ArrayList<Enemy> enemyList = new ArrayList<Enemy>();
@@ -30,10 +31,13 @@ public class Game extends Thread {
     private Audio backgroundMusic;
     private Audio hitSound;
 
+    //hp바 색깔용 색 객체
+    Color pink = new Color(244, 58, 195);
+
     @Override
     public void run() {
-        //backgroundMusic = new Audio("src/audio/gameBGM.wav", true);
-        //hitSound = new Audio("src/audio/hitSound.wav", false);
+        backgroundMusic = new Audio("src/audio/gameBGM.wav", true);
+        hitSound = new Audio("src/audio/bomb.wav", false);
 
         reset();
         while (true) {
@@ -69,7 +73,7 @@ public class Game extends Thread {
         playerX = 350;
         playerY = 700;
 
-        //backgroundMusic.start();
+        backgroundMusic.start();
 
         playerAttackList.clear();
         enemyList.clear();
@@ -95,11 +99,11 @@ public class Game extends Thread {
             for (int j = 0; j < enemyList.size(); j++) {
                 enemy = enemyList.get(j);
                 if (playerAttack.x > enemy.x && playerAttack.x < enemy.x + enemy.width && playerAttack.y > enemy.y && playerAttack.y < enemy.y + enemy.height) {
-                    enemy.hp  -= playerAttack.attack;
+                    enemy.hp -= playerAttack.attack;
                     playerAttackList.remove(playerAttack);
                 }
                 if (enemy.hp <= 0) {
-                    //hitSound.start();
+                    hitSound.start();
                     enemyList.remove(enemy);
                     score += 1000;
                 }
@@ -109,14 +113,14 @@ public class Game extends Thread {
 
     private void enemyAppearProcess() {
         if (cnt % 80 == 0) {
-            enemy = new Enemy((int)(Math.random()*621), 0);
+            enemy = new Enemy((int) (Math.random() * 621), 0);
             enemyList.add(enemy);
 
         }
     }
 
     private void enemyMoveProcess() {
-        for (int i = 0; i< enemyList.size(); i++) {
+        for (int i = 0; i < enemyList.size(); i++) {
             enemy = enemyList.get(i);
             enemy.move();
         }
@@ -132,9 +136,8 @@ public class Game extends Thread {
             enemyAttack = enemyAttackList.get(i);
             enemyAttack.fire();
 
-            //todo
             if (enemyAttack.x > playerX & enemyAttack.x < playerX + playerWidth && enemyAttack.y > playerY && enemyAttack.y < playerY + playerHeight) {
-                //hitSound.start();
+                hitSound.start();
                 playerHp -= enemyAttack.attack;
                 enemyAttackList.remove(enemyAttack);
                 if (playerHp <= 0) isOver = true;
@@ -143,27 +146,19 @@ public class Game extends Thread {
     }
 
     public void gameDraw(Graphics g) {
+
         playerDraw(g);
         enemyDraw(g);
         infoDraw(g);
     }
 
-    public void infoDraw(Graphics g) {
-        g.setColor(Color.WHITE);
-        g.setFont(new Font("Arial", Font.BOLD, 40));
-        g.drawString("SCORE : " + score, 40, 80);
-        if (isOver) {
-            g.setColor(Color.BLACK);
-            g.setFont(new Font("Arial", Font.BOLD, 80));
-            g.drawString("Press R to restart", 295, 380);
-        }
-    }
+
 
     //todo hp 바
     public void playerDraw(Graphics g) {
         g.drawImage(player, playerX, playerY, null);
-        g.setColor(Color.GREEN);
-        g.fillRect(playerX - 1, playerY - 40, playerHp * 6, 20);
+        g.setColor(pink);
+        g.fillRect(playerX - 57, playerY - 40, playerHp * 6, 20);
         for (int i = 0; i < playerAttackList.size(); i++) {
             playerAttack = playerAttackList.get(i);
             g.drawImage(playerAttack.image, playerAttack.x, playerAttack.y, null);
@@ -171,16 +166,36 @@ public class Game extends Thread {
     }
 
     public void enemyDraw(Graphics g) {
-        for (int i = 0; i< enemyList.size(); i++) {
+        for (int i = 0; i < enemyList.size(); i++) {
             enemy = enemyList.get(i);
             g.drawImage(enemy.image, enemy.x, enemy.y, null);
-            g.setColor(Color.GREEN);
-            g.fillRect(enemy.x + 1, enemy.y - 40, enemy.hp * 15, 20);
+            g.setColor(pink);
+            g.fillRect(enemy.x - 35, enemy.y - 40, enemy.hp * 15, 20);
         }
         for (int i = 0; i < enemyAttackList.size(); i++) {
             enemyAttack = enemyAttackList.get(i);
             g.drawImage(enemyAttack.image, enemyAttack.x, enemyAttack.y, null);
         }
+    }
+
+    public void infoDraw(Graphics g) {
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("AvalanchenoBitma",Font.PLAIN, 40));
+        g.drawString("SCORE : " + score, 40, 80);
+
+        if (isOver) {
+            g.setColor(Color.WHITE);
+            g.setFont(new Font("AvalanchenoBitma",Font.PLAIN, 80));
+            g.drawString("Game Over", 200, 380);
+            g.drawString("Press R to restart", 60, 480);
+            g.drawImage(enemy.image, enemy.x, enemy.y, null);
+
+
+
+        }
+
+
+
     }
 
     public boolean isOver() {
@@ -204,6 +219,7 @@ public class Game extends Thread {
     }
 
     public void setShooting(boolean shooting) {
+
         this.shooting = shooting;
     }
 }
